@@ -1,12 +1,17 @@
 #!/usr/bin/env sh
 
 _() {
-  for YEAR in $(seq 2015 2018); do
+  echo "Start year: "
+  read -r START_YEAR
+  echo "End year: "
+  read -r END_YEAR
+
+  echo "GitHub Username: "
+  read -r USERNAME
+  echo "GitHub Access token: "
+  read -r ACCESS_TOKEN
+  for YEAR in $(seq $START_YEAR $END_YEAR); do
     echo "Generating commits for ${YEAR}..."
-    echo "GitHub Username: "
-    read -r USERNAME
-    echo "GitHub Access token: "
-    read -r ACCESS_TOKEN
 
     [ -z "$USERNAME" ] && exit 1
     [ -z "$ACCESS_TOKEN" ] && exit 1
